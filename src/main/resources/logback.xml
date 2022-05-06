@@ -9,6 +9,8 @@
     <logger name="org.eclipse.jetty" level="ERROR"/>
     <!-- struts2 -->
     <logger name="com.opensymphony.xwork2" level="INFO"/>
+    <!-- template -->
+    <logger name="org.apache.struts2.components.template" level="ERROR"/>
 
     <root level="INFO">　　　
         <appender-ref ref="STDOUT"/>　

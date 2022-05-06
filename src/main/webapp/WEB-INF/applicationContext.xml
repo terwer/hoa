@@ -1,8 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-    http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <!-- 数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/hoa?useSSL=false"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="123456"></property>
+        <property name="maxTotal" value="100"></property>
+        <property name="maxIdle" value="30"></property>
+        <property name="defaultAutoCommit" value="true"></property>
+    </bean>
+
+    <!-- session工厂 -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:/com/terwergreen/hoa/bean/*.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- 开启事务控制的注解支持，配置 Annotation 驱动，扫描@Transactional注解的类定义事务  -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <!-- 业务bean分层依赖 -->
+    <bean id="userDao" class="com.terwergreen.hoa.dao.impl.UserDaoImpl" scope="singleton">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="userService" class="com.terwergreen.hoa.service.impl.UserServiceImpl" scope="prototype">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="saveUserAction" class="com.terwergreen.hoa.action.user.SaveUserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+    </bean>
 </beans>
