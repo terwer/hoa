@@ -3,5 +3,28 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <!--
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.ui.templateDir" value="template" />
+    <constant name="struts.ui.templateSuffix" value="ftl" />
+    -->
+    <!-- 国际化
+    <constant name="struts.custom.i18n.resources" value="globalMessages"/>
+    -->
 
+    <package name="user" extends="struts-default">
+        <!--
+        <default-action-ref name="index"/>
+        <action name="index">
+            <result name="success">/index.jsp</result>
+        </action>
+        -->
+
+        <action name="saveUser" class="saveUserAction">
+            <result name="success" type="redirect">listUser.action</result>
+            <!---
+            <result name="input" type="redirect">/saveUser.jsp</result>
+            -->
+        </action>
+    </package>
 </struts>
