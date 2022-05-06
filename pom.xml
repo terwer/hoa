@@ -11,8 +11,8 @@
     <groupId>com.terwergreen</groupId>
     <artifactId>myoaboot</artifactId>
     <version>0.0.1</version>
-    <name>hoa</name>
-    <description>hoa</description>
+    <name>myoaboot</name>
+    <description>myoaboot</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
