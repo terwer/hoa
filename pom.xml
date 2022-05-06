@@ -9,8 +9,7 @@
     <version>0.0.1</version>
     <packaging>war</packaging>
 
-    <name>hoa Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
+    <name>hoa</name>
     <url>http://www.terwergreen.com</url>
 
     <properties>
