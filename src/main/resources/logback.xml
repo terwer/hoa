@@ -1,0 +1,16 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">　　　　
+        <encoder>　　　　　　　　
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>　　　
+        </encoder>
+    </appender>
+
+    <!-- jetty -->
+    <logger name="org.eclipse.jetty" level="ERROR"/>
+    <!-- struts2 -->
+    <logger name="com.opensymphony.xwork2" level="INFO"/>
+
+    <root level="INFO">　　　
+        <appender-ref ref="STDOUT"/>　
+    </root>
+</configuration>
