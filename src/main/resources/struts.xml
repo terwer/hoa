@@ -26,5 +26,8 @@
             <result name="input" type="redirect">/saveUser.jsp</result>
             -->
         </action>
+        <action name="listUser" class="listUserAction">
+            <result name="success">/listUser.jsp</result>
+        </action>
     </package>
 </struts>
