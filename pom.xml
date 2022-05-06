@@ -5,12 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.terwergreen</groupId>
-    <artifactId>hoa</artifactId>
+    <artifactId>s1oa</artifactId>
     <version>0.0.1</version>
     <packaging>war</packaging>
 
-    <name>hoa Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
+    <name>s1oa</name>
     <url>http://www.terwergreen.com</url>
 
     <properties>
@@ -112,7 +111,7 @@
     </dependencies>
 
     <build>
-        <finalName>hoa</finalName>
+        <finalName>s1oa</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
             </plugins>
