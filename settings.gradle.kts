@@ -1,1 +1,1 @@
-rootProject.name = "hoabootkt"
+rootProject.name = "myoabootkt"
