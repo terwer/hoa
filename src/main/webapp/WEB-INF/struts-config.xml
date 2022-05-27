@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="userForm" type="com.terwergreen.s1oa.form.UserForm">
+        </form-bean>
+        <form-bean name="userListForm" type="com.terwergreen.s1oa.form.UserListForm">
+        </form-bean>
+    </form-beans>
+
+    <action-mappings>
+        <action name="userForm" path="/saveUser" scope="request"
+                type="no.hackeriet.struts1Spring.struts.DelegatingActionProxy">
+            <forward name="success" path="/listUser.do" redirect="true"></forward>
+        </action>
+
+        <action name="userListForm" path="/listUser" scope="request"
+                type="no.hackeriet.struts1Spring.struts.DelegatingActionProxy">
+            <forward name="success" path="/listUser.jsp"></forward>
+        </action>
+    </action-mappings>
+
+    <!-- struts1整合spring5 -->
+    <controller processorClass="no.hackeriet.struts1Spring.struts.DelegatingRequestProcessor"/>
+
+    <!-- 国际化 -->
+    <message-resources parameter="ApplicationResources"/>
+</struts-config>
