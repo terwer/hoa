@@ -39,7 +39,7 @@ public class SaveUserAction extends ActionSupport {
     @Override
     public String execute() {
         try {
-            logger.info("考试保存用户");
+            logger.info("开始保存用户");
             userService.saveUser(user);
         } catch (Exception e) {
             logger.error("保存用户出错：", e);
