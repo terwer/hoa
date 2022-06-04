@@ -3,6 +3,7 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <constant name="struts.ui.theme" value="xhtml" />
     <!--
     <constant name="struts.ui.theme" value="simple" />
     <constant name="struts.ui.templateDir" value="template" />
@@ -22,9 +23,7 @@
 
         <action name="saveUser" class="saveUserAction">
             <result name="success" type="redirect">listUser.action</result>
-            <!---
-            <result name="input" type="redirect">/saveUser.jsp</result>
-            -->
+            <result name="input">/saveUser.jsp</result>
         </action>
         <action name="listUser" class="listUserAction">
             <result name="success">/listUser.jsp</result>

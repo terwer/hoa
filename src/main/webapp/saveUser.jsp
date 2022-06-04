@@ -4,6 +4,20 @@
 <html>
 <head>
     <title>保存用户</title>
+    <link rel="stylesheet" href="css/common.css"></link>
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.12.4/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var form = document.forms[0];
+            $(form).on("submit", function () {
+                var firstname = $("input[name='user.firstname']");
+                if ($(firstname).val().trim() == "") {
+                    alert("姓名不能为空");
+                    return false;
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <h1 style="color: red;">保存用户</h1>
