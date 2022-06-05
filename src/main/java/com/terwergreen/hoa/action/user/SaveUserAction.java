@@ -1,12 +1,15 @@
 package com.terwergreen.hoa.action.user;
 
-import com.opensymphony.xwork2.ActionSupport;
-import com.terwergreen.hoa.bean.User;
-import com.terwergreen.hoa.filter.HoaStartupFilter;
-import com.terwergreen.hoa.service.UserService;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.terwergreen.hoa.bean.User;
+import com.terwergreen.hoa.service.UserService;
 
 /**
  * 用户Action
@@ -16,26 +19,26 @@ import org.slf4j.LoggerFactory;
  * @date: 2022-05-06 21:05
  **/
 public class SaveUserAction extends ActionSupport {
-    private static final Logger logger = LoggerFactory.getLogger(SaveUserAction.class);
+	private static final Logger logger = LoggerFactory.getLogger(SaveUserAction.class);
 
-    private User user;
-    private UserService userService;
+	private User user;
+	private UserService userService;
 
-    public User getUser() {
-        return user;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public UserService getUserService() {
-        return userService;
-    }
+	public UserService getUserService() {
+		return userService;
+	}
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 //    @Override
 //    public void validate() {
@@ -57,15 +60,25 @@ public class SaveUserAction extends ActionSupport {
 //        }
 //    }
 
-    @Override
-    public String execute() {
-        try {
-            logger.info("开始保存用户");
-            userService.saveUser(user);
-        } catch (Exception e) {
-            logger.error("保存用户出错：", e);
-        }
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void validate() {
+		Map map = this.getFieldErrors();
+		Set set = map.keySet();
+		for (Iterator iter = set.iterator(); iter.hasNext();) {
+			logger.info(map.get(iter.next()).toString());
+		}
+	}
 
-        return SUCCESS;
-    }
+	@Override
+	public String execute() {
+		try {
+			logger.info("开始保存用户");
+			userService.saveUser(user);
+		} catch (Exception e) {
+			logger.error("保存用户出错：", e);
+		}
+
+		return SUCCESS;
+	}
 }

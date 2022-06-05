@@ -2,34 +2,13 @@
 <!DOCTYPE validators PUBLIC
         "-//Apache Struts//XWork Validator 1.0.3//EN"
         "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+        
 <validators>
-    <!-- action中需要校验的属性 -->
-    <field name="user.firstname">
-        <!-- 指定校验器 -->
-        <field-validator type="requiredstring">
-            <!-- 为校验器中的参数配置值 -->
-            <param name="trim">true</param>
-            <!-- 校验失败后的提示信息 -->
-            <message>用户名不能为空</message>
-        </field-validator>
-    </field>
-
-    <field name="user.lastname">
-        <field-validator type="requiredstring">
-            <param name="trim">true</param>
-            <message>昵称不能为空</message>
-        </field-validator>
-    </field>
-
-    <field name="user.age">
-        <field-validator type="int">
-            <param name="min">1</param>
-            <param name="max">120</param>
-            <message>年龄输入必须在 ${min} - ${max} 之间</message>
-        </field-validator>
-
-        <field-validator type="required">
-            <message>请输入年龄</message>
-        </field-validator>
-    </field>
+	<field name="user">
+		<field-validator type="visitor">
+			<param name="context">user</param>
+			<param name="appendPrefix">true</param>
+			<message>用户的</message>
+		</field-validator>
+	</field>
 </validators>
