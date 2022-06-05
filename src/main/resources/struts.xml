@@ -14,6 +14,20 @@
     -->
 
     <package name="user" extends="struts-default">
+        <!-- 声明拦截器 -->
+        <interceptors>
+            <interceptor name="myInterceptor" class="com.terwergreen.hoa.interceptor.MyInterceptor"></interceptor>
+            <!-- 创建声明拦截器栈 -->
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <!-- 在Action中使用拦截器 -->
+                <interceptor-ref name="myInterceptor"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- 将默认拦截器栈设置我我们自定义的拦截器栈 -->
+        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+
         <!--
         <default-action-ref name="index"/>
         <action name="index">

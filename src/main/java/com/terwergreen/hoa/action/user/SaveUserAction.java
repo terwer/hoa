@@ -37,25 +37,25 @@ public class SaveUserAction extends ActionSupport {
         this.userService = userService;
     }
 
-    @Override
-    public void validate() {
-        if (StringUtils.isEmpty(user.getFirstname())) {
-            this.addFieldError("user.firstname", "姓名不能为空");
-        }
-        if (StringUtils.isEmpty(user.getLastname())) {
-            this.addFieldError("user.lastname", "昵称不能为空");
-        }
-        if (null == user.getAge()) {
-            this.addFieldError("user.age", "年龄不能为空");
-        }
-
-        if (user.getFirstname().length() > 150) {
-            this.addFieldError("user.firstname", "姓名不能超过150字符");
-        }
-        if (user.getLastname().length() > 150) {
-            this.addFieldError("user.lastname", "昵称不能超过150字符");
-        }
-    }
+//    @Override
+//    public void validate() {
+//        if (StringUtils.isEmpty(user.getFirstname())) {
+//            this.addFieldError("user.firstname", "姓名不能为空");
+//        }
+//        if (StringUtils.isEmpty(user.getLastname())) {
+//            this.addFieldError("user.lastname", "昵称不能为空");
+//        }
+//        if (null == user.getAge()) {
+//            this.addFieldError("user.age", "年龄不能为空");
+//        }
+//
+//        if (user.getFirstname().length() > 150) {
+//            this.addFieldError("user.firstname", "姓名不能超过150字符");
+//        }
+//        if (user.getLastname().length() > 150) {
+//            this.addFieldError("user.lastname", "昵称不能超过150字符");
+//        }
+//    }
 
     @Override
     public String execute() {
