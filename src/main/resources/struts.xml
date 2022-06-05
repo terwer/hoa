@@ -39,8 +39,14 @@
             <result name="success" type="redirect">listUser.action</result>
             <result name="input">/saveUser.jsp</result>
         </action>
+        
         <action name="listUser" class="listUserAction">
             <result name="success">/listUser.jsp</result>
         </action>
+        
+        <action name="removeUser" class="removeUserAction">
+        	<result name="success" type="redirect">listUser.action</result>
+        </action>
+        
     </package>
 </struts>

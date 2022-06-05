@@ -59,4 +59,8 @@
     <bean id="listUserAction" class="com.terwergreen.hoa.action.user.ListUserAction" scope="prototype">
         <property name="userService" ref="userService"></property>
     </bean>
+    
+    <bean id="removeUserAction" class="com.terwergreen.hoa.action.user.RemoveUserAction" scope="prototype">
+    	<property name="userService" ref="userService"></property>
+    </bean>
 </beans>

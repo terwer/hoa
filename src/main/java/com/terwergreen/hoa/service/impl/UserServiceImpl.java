@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
         userDao.saveUser(user);
     }
 
+    @Transactional(readOnly = false)
     @Override
     public void deleteUser(User user) {
         userDao.removeUser(user);
